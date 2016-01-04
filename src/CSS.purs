@@ -11,5 +11,8 @@ type ParseTree = {stylesheet :: Stylesheet, parsingErrors :: Array String}
 
 foreign import parseImpl :: forall opts. Fn2 String { | opts } ParseTree
 
+rules :: ParseTree -> Array Rule
+rules x = x.stylesheet.rules
+
 parse :: String -> ParseTree
 parse x = runFn2 parseImpl x {}
